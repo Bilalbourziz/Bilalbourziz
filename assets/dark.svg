@@ -1,0 +1,208 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="610" viewBox="0 0 1180 610" role="img" aria-labelledby="title desc">
+  <title id="title">Profile banner — dark</title>
+  <desc id="desc">Premium glassmorphism GitHub header with ASCII portrait and animated terminal — dark theme.</desc>
+
+  <defs>
+    <clipPath id="canvas-clip"><rect x="0" y="0" width="1180" height="610" rx="20" ry="20"/></clipPath>
+
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#030712"/>
+      <stop offset="1" stop-color="#071127"/>
+    </linearGradient>
+
+    <linearGradient id="accentGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#7C3AED">
+        <animate attributeName="stop-color" values="#7C3AED;#22D3EE;#10B981;#7C3AED" dur="9s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="1" stop-color="#10B981">
+        <animate attributeName="stop-color" values="#10B981;#7C3AED;#22D3EE;#10B981" dur="9s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+
+    <linearGradient id="asciiFill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#22D3EE">
+        <animate attributeName="stop-color" values="#22D3EE;#7C3AED;#10B981;#22D3EE" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="1" stop-color="#7C3AED">
+        <animate attributeName="stop-color" values="#7C3AED;#10B981;#22D3EE;#7C3AED" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <animate attributeName="x1" from="0" to="1" dur="12s" repeatCount="indefinite"/>
+      <animate attributeName="x2" from="1" to="0" dur="12s" repeatCount="indefinite"/>
+    </linearGradient>
+
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="18" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Luma-to-alpha: photo -> mask -->
+    <filter id="lumaToAlpha">
+      <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0.2126 0.7152 0.0722 0 0  0 0 0 1 0" result="lum"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 1"/></feComponentTransfer>
+    </filter>
+
+    <pattern id="asciiPattern" width="12" height="16" patternUnits="userSpaceOnUse">
+      <text x="0" y="12" font-family="SFMono-Regular,Menlo,Monaco,Consolas,monospace" font-size="12" fill="url(#asciiFill)" opacity="0.95">&#64;#%?*+=-:. </text>
+    </pattern>
+
+    <!-- MASK: Replace href with your base64 data URI to inline photo -->
+    <mask id="photoMask" maskUnits="userSpaceOnUse">
+      <image x="0" y="0" width="448" height="610" preserveAspectRatio="xMidYMid slice"
+             href="data:image/jpeg;base64,REPLACE_WITH_YOUR_BASE64" filter="url(#lumaToAlpha)"/>
+    </mask>
+
+    <filter id="grain">
+      <feTurbulence baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="table" tableValues="0 0.06"/></feComponentTransfer>
+      <feBlend in="SourceGraphic" in2="noise" mode="overlay"/>
+    </filter>
+
+    <clipPath id="leftClip"><rect x="36" y="42" width="448" height="526" rx="14" ry="14"/></clipPath>
+
+    <linearGradient id="panelGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0F172A" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#0B1220" stop-opacity="0.65"/>
+    </linearGradient>
+
+    <linearGradient id="glassShine" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <linearGradient id="pillGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22D3EE"/>
+      <stop offset="0.6" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#10B981"/>
+    </linearGradient>
+
+    <linearGradient id="shimmer" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#ffffff" stop-opacity="0.22"><animate attributeName="offset" values="0;1" dur="2.8s" repeatCount="indefinite"/></stop>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <g clip-path="url(#canvas-clip)">
+    <rect width="1180" height="610" fill="url(#bgGrad)"/>
+
+    <g filter="url(#glow)" opacity="0.12">
+      <ellipse cx="920" cy="140" rx="260" ry="120" fill="#7C3AED"/>
+      <ellipse cx="220" cy="360" rx="200" ry="150" fill="#10B981"/>
+      <ellipse cx="640" cy="360" rx="300" ry="180" fill="#22D3EE" opacity="0.06"/>
+    </g>
+
+    <rect width="1180" height="610" fill="#000" opacity="0" filter="url(#grain)"/>
+
+    <!-- LEFT: ASCII portrait -->
+    <g id="asciiBlock" clip-path="url(#leftClip)">
+      <rect x="36" y="42" width="448" height="526" rx="14" ry="14" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)" stroke-width="1" />
+
+      <g id="asciiFillGroup" mask="url(#photoMask)">
+        <rect x="36" y="42" width="448" height="526" fill="url(#asciiPattern)"/>
+
+        <!-- line-by-line reveal: top->bottom -->
+        <!-- rows of overlay that fade to reveal ascii -->
+        <!-- (complete set included; truncated here for brevity in explanation) -->
+        <rect x="36" y="42" width="448" height="16" fill="#030712" opacity="0.98"><animate attributeName="opacity" values="0.98;0" dur="0.9s" begin="0.6s" fill="freeze"/></rect>
+        <rect x="36" y="58" width="448" height="16" fill="#030712" opacity="0.98"><animate attributeName="opacity" values="0.98;0" dur="0.9s" begin="0.8s" fill="freeze"/></rect>
+        <!-- ... repeated rows down to bottom (see original file for full set) -->
+
+        <!-- scanline sweep -->
+        <rect x="36" y="-120" width="448" height="180" rx="2" fill="url(#accentGrad)" opacity="0.06" filter="url(#glow)">
+          <animateTransform attributeName="transform" attributeType="XML" type="translate" from="0,0" to="0,720" dur="6s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.04;0.12;0.04" dur="6s" repeatCount="indefinite"/>
+        </rect>
+
+        <!-- small floating particles -->
+        <g fill="#22D3EE" opacity="0.7" filter="url(#glow)">
+          <circle cx="120" cy="140" r="1.6" fill="#22D3EE" opacity="0.12"><animateTransform attributeName="transform" type="translate" dur="7s" values="0,0;0,-14;0,0" repeatCount="indefinite"/></circle>
+          <circle cx="200" cy="260" r="1.2" fill="#7C3AED" opacity="0.12"><animateTransform attributeName="transform" type="translate" dur="8.5s" values="0,0;0,12;0,0" repeatCount="indefinite"/></circle>
+          <circle cx="320" cy="420" r="1.8" fill="#10B981" opacity="0.10"><animateTransform attributeName="transform" type="translate" dur="6.8s" values="0,0;0,-10;0,0" repeatCount="indefinite"/></circle>
+        </g>
+
+        <!-- floating ASCII group -->
+        <g transform="translate(0,0)">
+          <animateTransform attributeName="transform" attributeType="XML" type="translate" values="0,0;0,-4;0,0;0,4;0,0" dur="10s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- cursor -->
+        <rect x="456" y="536" width="6" height="18" rx="2" fill="#7C3AED" opacity="0.95"><animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/></rect>
+      </g>
+
+      <rect x="36" y="42" width="448" height="526" rx="14" ry="14" fill="none" stroke="url(#shimmer)" stroke-width="1.2" opacity="0.9"/>
+    </g>
+
+    <!-- RIGHT: Terminal -->
+    <g id="terminal" transform="translate(520,64)">
+      <rect x="0" y="0" width="624" height="492" rx="14" ry="14" fill="url(#panelGrad)" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+      <rect x="0" y="0" width="624" height="140" rx="14" ry="14" fill="url(#glassShine)" opacity="0.12"/>
+
+      <g transform="translate(18,14)"><circle cx="6" cy="6" r="5" fill="#FF6B6B" opacity="0.95"/><circle cx="26" cy="6" r="5" fill="#FFD166" opacity="0.95"/><circle cx="46" cy="6" r="5" fill="#06D6A0" opacity="0.95"/></g>
+
+      <g transform="translate(36,120)" fill="#F8FAFC" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif">
+        <text x="0" y="0" font-size="18" fill="#94A3B8">Hi 👋</text>
+        <text x="0" y="36" font-size="32" font-weight="700" id="nameText">Bilalbourziz</text>
+
+        <g id="roles" transform="translate(0,72)" fill="#F8FAFC" font-size="16" font-family="SFMono-Regular,Menlo,Monaco,Consolas,monospace">
+          <defs>
+            <clipPath id="clipRole1"><rect x="0" y="0" width="0" height="22"></rect></clipPath>
+            <clipPath id="clipRole2"><rect x="0" y="30" width="0" height="22"></rect></clipPath>
+            <clipPath id="clipRole3"><rect x="0" y="60" width="0" height="22"></rect></clipPath>
+            <clipPath id="clipRole4"><rect x="0" y="90" width="0" height="22"></rect></clipPath>
+          </defs>
+
+          <text x="0" y="16" clip-path="url(#clipRole1)">Frontend Engineer</text>
+          <text x="0" y="46" clip-path="url(#clipRole2)">Full Stack Developer</text>
+          <text x="0" y="76" clip-path="url(#clipRole3)">Open Source Contributor</text>
+          <text x="0" y="106" clip-path="url(#clipRole4)">AI Enthusiast</text>
+
+          <animate xlink:href="#clipRole1 rect" attributeName="width" from="0" to="420" dur="1.6s" begin="2.2s" fill="freeze"/>
+          <animate xlink:href="#clipRole2 rect" attributeName="width" from="0" to="420" dur="1.8s" begin="4.0s" fill="freeze"/>
+          <animate xlink:href="#clipRole3 rect" attributeName="width" from="0" to="420" dur="1.9s" begin="6.2s" fill="freeze"/>
+          <animate xlink:href="#clipRole4 rect" attributeName="width" from="0" to="420" dur="1.8s" begin="8.7s" fill="freeze"/>
+        </g>
+
+        <rect id="termCursor" x="192" y="102" width="6" height="18" rx="2" fill="#22D3EE" opacity="0.95">
+          <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite" begin="2.2s"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;0,0;0,30;0,60;0,90" keyTimes="0;0.4;0.65;0.87;1" dur="10s" repeatCount="indefinite"/>
+        </rect>
+      </g>
+
+      <g transform="translate(36,280)" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif" fill="#94A3B8" font-size="14">
+        <text x="0" y="0" id="info1" opacity="0">Location: City, Country</text>
+        <text x="0" y="26" id="info2" opacity="0">Education: University</text>
+        <text x="0" y="52" id="info3" opacity="0">Current: Building stuff</text>
+        <text x="0" y="78" id="info4" opacity="0">Portfolio: portfolio.example</text>
+        <text x="0" y="104" id="info5" opacity="0">Email: hello@example.com</text>
+
+        <animate xlink:href="#info1" attributeName="opacity" from="0" to="1" dur="0.6s" begin="5.0s" fill="freeze"/>
+        <animate xlink:href="#info2" attributeName="opacity" from="0" to="1" dur="0.6s" begin="5.3s" fill="freeze"/>
+        <animate xlink:href="#info3" attributeName="opacity" from="0" to="1" dur="0.6s" begin="5.6s" fill="freeze"/>
+        <animate xlink:href="#info4" attributeName="opacity" from="0" to="1" dur="0.6s" begin="5.9s" fill="freeze"/>
+        <animate xlink:href="#info5" attributeName="opacity" from="0" to="1" dur="0.6s" begin="6.2s" fill="freeze"/>
+      </g>
+
+      <g transform="translate(36,400)" font-family="Inter,Segoe UI,Helvetica,Arial,sans-serif">
+        <g transform="translate(0,0)">
+          <rect x="0" y="0" width="120" height="34" rx="18" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)"/>
+          <rect x="6" y="6" width="28" height="22" rx="10" fill="url(#pillGrad)" opacity="0.18" filter="url(#glow)"/>
+          <text x="44" y="22" fill="#F8FAFC" font-size="13">React</text>
+          <animateTransform attributeName="transform" type="scale" values="1;1.03;1" dur="6s" repeatCount="indefinite"/>
+        </g>
+
+        <g transform="translate(132,0)"><rect x="0" y="0" width="120" height="34" rx="18" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)"/><rect x="6" y="6" width="28" height="22" rx="10" fill="url(#pillGrad)" opacity="0.18" filter="url(#glow)"/><text x="44" y="22" fill="#F8FAFC" font-size="13">Next.js</text><animateTransform attributeName="transform" type="scale" values="1;1.02;1" dur="6.2s" repeatCount="indefinite" begin="0.2s"/></g>
+
+        <g transform="translate(264,0)"><rect x="0" y="0" width="120" height="34" rx="18" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)"/><rect x="6" y="6" width="28" height="22" rx="10" fill="url(#pillGrad)" opacity="0.18" filter="url(#glow)"/><text x="44" y="22" fill="#F8FAFC" font-size="13">TypeScript</text><animateTransform attributeName="transform" type="scale" values="1;1.025;1" dur="6.4s" repeatCount="indefinite" begin="0.4s"/></g>
+
+        <g transform="translate(396,0)"><rect x="0" y="0" width="120" height="34" rx="18" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.04)"/><rect x="6" y="6" width="28" height="22" rx="10" fill="url(#pillGrad)" opacity="0.18" filter="url(#glow)"/><text x="44" y="22" fill="#F8FAFC" font-size="13">Tailwind</text><animateTransform attributeName="transform" type="scale" values="1;1.02;1" dur="6s" repeatCount="indefinite" begin="0.6s"/></g>
+      </g>
+
+      <g transform="translate(36,454)">
+        <g transform="translate(0,0)" opacity="0.95" filter="url(#glow)"><circle cx="12" cy="12" r="12" fill="#0B1220" stroke="rgba(255,255,255,0.04)"/><text x="6" y="16" font-family="SFMono-Regular,monospace" font-size="12" fill="#22D3EE">GH</text></g>
+        <g transform="translate(48,0)" opacity="0.95" filter="url(#glow)"><circle cx="12" cy="12" r="12" fill="#0B1220" stroke="rgba(255,255,255,0.04)"/><text x="6" y="16" font-family="SFMono-Regular,monospace" font-size="12" fill="#7C3AED">in</text></g>
+        <g transform="translate(96,0)" opacity="0.95" filter="url(#glow)"><circle cx="12" cy="12" r="12" fill="#0B1220" stroke="rgba(255,255,255,0.04)"/><text x="6" y="16" font-family="SFMono-Regular,monospace" font-size="12" fill="#10B981">tw</text></g>
+        <g transform="translate(144,0)" opacity="0.95" filter="url(#glow)"><circle cx="12" cy="12" r="12" fill="#0B1220" stroke="rgba(255,255,255,0.04)"/><text x="6" y="16" font-family="SFMono-Regular,monospace" font-size="12" fill="#22D3EE">⎈</text></g>
+      </g>
+
+      <rect x="0" y="0" width="624" height="492" rx="14" ry="14" fill="none" stroke="url(#shimmer
